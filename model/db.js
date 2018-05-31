@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
   // dob: String
   Fullname:{
     type: 'string',
-    unique: true,
     required: true,
     trim: true
   },
@@ -20,34 +19,29 @@ const userSchema = new mongoose.Schema({
   },
   Age:{
     type: 'number',
-    unique: true,
     required: true,
     trim: true
   },
   DOB:{
     type: 'string',
-    unique: true,
     required: true,
     trim: true
   },
 Height :{
   type: 'number',
-  unique: true,
   required:true,
   trim: true
 },  
 income:{
   type: 'number',
-  unique: true,
   required:true,
   trim: true
 },
 monthly_cost:{
   type: 'number',
-  unique: true,
   required:true,
   trim: true
 }
 });
-module.exports= mongoose.model('User', userSchema);
+module.exports= mongoose.model('customers', userSchema);
  

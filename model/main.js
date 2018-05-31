@@ -27,19 +27,54 @@ module.exports = (app) => {
             income: req.body.income,
             monthly_cost:req.body.cost
         };
-        // let profileObject = req.body;
-        // const newProfile = new userData(profileObject);
-        // console.log(profileObject);
 
         newProfile.save((err, User) =>{
         if (err){
-            res.send ('error found');
+            res.send ('error found '+err);
         }else {
-            res.send('/main');
+            res.send({
+                data: userData
+            });
         }
-        2
+        
 
        });
+
+    });
+    app.put('/main/:id', (req, res) =>{
+        const id = req.params.id;
+        let profileObject = req.body;
+        // console.log(id);
+        // res.send(id);
+
+        userProfile.where({ _id: id }).update(profileObject).exec((err, detail) => {
+            if(err){
+                res.send(`Error Updating Users Profile \n${err}`);
+            }else{
+                res.send({
+                    // message:message("put","Lecturer"),
+                    data: detail
+                });
+            }
+        }) ;
+
+    });
+    app.delete('/main/:id', (req, res) =>{
+        const id = req.params.id;
+        let profileObject = req.body;
+        // console.log(id);
+        // res.send(id);
+
+        userProfile.where({ _id: id }).remove().exec((err, detail) => {
+            if(err){
+                res.send(`Error Updating Users Profile \n${err}`);
+            }else{
+                res.send({
+                    // message:message("put","Lecturer"),
+                    data: detail
+                });
+            }
+        }) ;
 
     });
 }
