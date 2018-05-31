@@ -4,8 +4,8 @@ const mongoose= require('mongoose');
 const port = 8080;
 
 app.use(express.json());
-require('./model/main');
-require('./model/db')(app);
+
+require('./model/main')(app);
 mongoose.connect('mongodb://localhost/UserProfile_portal');
 
 app.listen(port,() => {
